@@ -6,10 +6,10 @@ android {
 
     defaultConfig {
         applicationId "finalyear.coursework.coc115.mathapplication"
-        minSdkVersion 9
+        minSdkVersion 11
         targetSdkVersion 21
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
     }
     buildTypes {
         release {

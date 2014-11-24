@@ -1,30 +1,24 @@
 package finalyear.coursework.coc115.mathapplication;
 
-import android.content.Intent;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 
-public class LandingActivity extends ActionBarActivity {
+public class QuestionPageActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_landing);
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        setContentView(R.layout.activity_question_page);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_landing, menu);
+        getMenuInflater().inflate(R.menu.menu_question_page, menu);
         return true;
     }
 
@@ -41,10 +35,5 @@ public class LandingActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void startButtonClick(View v) {
-        Intent intent = new Intent(this, TopicsPageActivity.class);
-        startActivity(intent);
     }
 }

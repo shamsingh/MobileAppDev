@@ -1,12 +1,16 @@
 package finalyear.coursework.coc115.mathapplication;
 
+import android.content.res.Configuration;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
-public class TopicsPageActivity extends ActionBarActivity {
+public class TopicsPageActivity extends ActionBarActivity
+        implements topicFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,5 +39,23 @@ public class TopicsPageActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onConfigurationChanged(Configuration config) {
+        super.onConfigurationChanged(config);
+
+        changeActionBar(config);
+    }
+
+    private void changeActionBar(Configuration config) {
+        ActionBar actionBar = getSupportActionBar();
+        if(config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            actionBar.hide();
+            Toast.makeText(getApplicationContext(), "Tis Landscape", Toast.LENGTH_SHORT).show();
+        }
+        else if(config.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            actionBar.show();
+            Toast.makeText(getApplicationContext(), "Tis Portrait", Toast.LENGTH_SHORT).show();
+        }
     }
 }

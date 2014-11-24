@@ -9,7 +9,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="finalyear.coursework.coc115.mathapplication.LandingActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,10 +28,28 @@
         <activity
             android:name="finalyear.coursework.coc115.mathapplication.TopicsPageActivity"
             android:label="@string/title_activity_topics_page"
-            android:parentActivityName="finalyear.coursework.coc115.mathapplication.LandingActivity" >
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName="finalyear.coursework.coc115.mathapplication.QuestionListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="finalyear.coursework.coc115.mathapplication.LandingActivity" />
+                android:value="finalyear.coursework.coc115.mathapplication.QuestionListActivity" />
+        </activity>
+        <activity
+            android:name="finalyear.coursework.coc115.mathapplication.QuestionPageActivity"
+            android:label="@string/title_activity_question_page"
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName="finalyear.coursework.coc115.mathapplication.TopicsPageActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="finalyear.coursework.coc115.mathapplication.TopicsPageActivity" />
+        </activity>
+        <activity
+            android:name="finalyear.coursework.coc115.mathapplication.ResultsPageActivity"
+            android:label="@string/title_activity_results_page"
+            android:parentActivityName="finalyear.coursework.coc115.mathapplication.QuestionPageActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="finalyear.coursework.coc115.mathapplication.QuestionPageActivity" />
         </activity>
     </application>
 

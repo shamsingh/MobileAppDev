@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="finalyear.coursework.coc115.mathapplication.topicFragment">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/title_activity_topics_page"
+        android:id="@+id/topics_textView"
+        android:gravity="center_horizontal|center_vertical"
+        android:textColor="#CCCCCC"
+        android:textSize="40sp"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:typeface="monospace"
+        />
+
+    <Button
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:text="@string/topic_addition"
+        android:id="@+id/addition_button"
+        android:background="#FF9999"
+        style="@style/topicButtons"/>
+
+    <Button
+        android:layout_width="343dp"
+        android:layout_height="wrap_content"
+        android:text="@string/topic_subtraction"
+        android:id="@+id/subtraction_button"
+        android:background="#EE6666"
+        style="@style/topicButtons"/>
+
+    <Button
+        android:layout_width="343dp"
+        android:layout_height="wrap_content"
+        android:text="@string/topic_multiplication"
+        android:id="@+id/multiplication_button"
+        android:background="#DD3333"
+        style="@style/topicButtons"/>
+
+    <Button
+        android:layout_width="343dp"
+        android:layout_height="wrap_content"
+        android:text="@string/topic_division"
+        android:id="@+id/division_button"
+        android:background="#CC0000"
+        style="@style/topicButtons"/>
+</LinearLayout>
