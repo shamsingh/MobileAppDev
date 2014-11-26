@@ -1,24 +1,12 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="finalyear.coursework.coc115.mathapplication.topicFragment">
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/title_activity_topics_page"
-        android:id="@+id/topics_textView"
-        android:gravity="center_horizontal|center_vertical"
-        android:textColor="#CCCCCC"
-        android:textSize="40sp"
-        android:layout_gravity="center_horizontal"
-        android:textStyle="bold"
-        android:typeface="monospace"
-        />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="finalyear.coursework.coc115.mathapplication.ResultsPageActivity"
+    android:id="@+id/"
+    android:background="#cccccc">
 
     <Button
         android:layout_width="344dp"
@@ -26,6 +14,8 @@
         android:text="@string/topic_addition"
         android:id="@+id/addition_button"
         android:background="#FF9999"
+        android:layout_marginTop="200dp"
+        android:layout_centerHorizontal="true"
         style="@style/topicButtons"/>
 
     <Button
@@ -34,7 +24,9 @@
         android:text="@string/topic_subtraction"
         android:id="@+id/subtraction_button"
         android:background="#EE6666"
-        style="@style/topicButtons"/>
+        android:layout_marginTop="270dp"
+        style="@style/topicButtons"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="343dp"
@@ -42,7 +34,9 @@
         android:text="@string/topic_multiplication"
         android:id="@+id/multiplication_button"
         android:background="#DD3333"
-        style="@style/topicButtons"/>
+        android:layout_marginTop="340dp"
+        style="@style/topicButtons"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="343dp"
@@ -50,5 +44,20 @@
         android:text="@string/topic_division"
         android:id="@+id/division_button"
         android:background="#CC0000"
-        style="@style/topicButtons"/>
-</LinearLayout>
+        android:layout_marginTop="410dp"
+        style="@style/topicButtons"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="343dp"
+        android:layout_height="wrap_content"
+        android:text="Topics"
+        android:id="@+id/button"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/addition_button"
+        android:layout_alignEnd="@+id/addition_button"
+        android:layout_centerHorizontal="true"
+        style="@style/topicButtons" />
+
+
+</RelativeLayout>
