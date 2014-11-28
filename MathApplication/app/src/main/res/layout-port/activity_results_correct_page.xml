@@ -10,4 +10,44 @@
     android:background="@drawable/correct"
     >
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/next_question_button"
+        android:layout_marginBottom="150dp"
+        android:height="50dp"
+        android:width="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/replay_question_button"
+        android:layout_marginTop="55dp"
+        android:height="50dp"
+        android:width="300dp"
+        android:layout_alignTop="@+id/next_question_button"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_menu_button"
+        android:height="50dp"
+        android:width="300dp"
+        android:layout_below="@+id/replay_question_button"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/facebook_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="36dp"
+        android:layout_marginLeft="20dp"
+        android:width="50dp"
+        android:height="50dp" />
 </RelativeLayout>
