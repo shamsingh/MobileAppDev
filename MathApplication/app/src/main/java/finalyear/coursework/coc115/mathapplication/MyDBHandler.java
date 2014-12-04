@@ -18,6 +18,9 @@ public class MyDBHandler extends SQLiteOpenHelper {
     private static final String COLUMN_ID = "_id";
     private static final String COLUMN_QUESTIONTITLE = "questiontitle";
     private static final String COLUMN_QUESTIONTEXT = "questiontext";
+    private static final String COLUMN_VARIABLEONE = "variableone";
+    private static final String COLUMN_VARIABLETWO = "variabletwo";
+    private static final String COLUMN_RESULT = "result";
 
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -29,7 +32,10 @@ public class MyDBHandler extends SQLiteOpenHelper {
                                     TABLE_QUESTIONS + "(" +
                                     COLUMN_ID + " INTEGER PRIMARY KEY," +
                                     COLUMN_QUESTIONTITLE + " TEXT," +
-                                    COLUMN_QUESTIONTEXT + " TEXT" + ")";
+                                    COLUMN_QUESTIONTEXT + " TEXT" +
+                                    COLUMN_VARIABLEONE + " TEXT" +
+                                    COLUMN_VARIABLETWO + " TEXT" +
+                                    COLUMN_RESULT + " TEXT" + ")";
         db.execSQL(CREATE_QUESTION_TABLE);
     }
 
@@ -43,6 +49,9 @@ public class MyDBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_QUESTIONTITLE, question.getQuestionTitle());
         values.put(COLUMN_QUESTIONTEXT, question.getQuestionText());
+        values.put(COLUMN_VARIABLEONE, String.valueOf(question.getVariableOne()));
+        values.put(COLUMN_VARIABLETWO, String.valueOf(question.getVariableTwo()));
+        values.put(COLUMN_RESULT, String.valueOf(question.getResult()));
 
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(TABLE_QUESTIONS, null, values);
@@ -62,6 +71,9 @@ public class MyDBHandler extends SQLiteOpenHelper {
             question.setID(Integer.parseInt(cursor.getString(0)));
             question.setQuestionTitle(cursor.getString(1));
             question.setQuestionText(cursor.getString(2));
+            question.setVariableOne(Double.valueOf(cursor.getString(3)));
+            question.setVariableTwo(Double.valueOf(cursor.getString(4)));
+            question.setResult(Double.valueOf(cursor.getString(5)));
             cursor.close();
         } else {
             question = null;

@@ -8,20 +8,29 @@ public class Question {
     private int _id;
     private String _questiontitle;
     private String _questiontext;
+    private double _variableOne;
+    private double _variableTwo;
+    private double _result;
 
     public Question() {
 
     }
 
-    public Question(int id, String questiontitle, String questiontext) {
+    public Question(int id, String questiontitle, String questiontext, double variableOne, double variableTwo, double result) {
         this._id = id;
         this._questiontitle = questiontitle;
         this._questiontext = questiontext;
+        this._variableOne = variableOne;
+        this._variableTwo = variableTwo;
+        this._result = result;
     }
 
-    public Question(String questiontitle, String questiontext) {
+    public Question(String questiontitle, String questiontext, double variableOne, double variableTwo, double result) {
         this._questiontitle = questiontitle;
         this._questiontext = questiontext;
+        this._variableOne = variableOne;
+        this._variableTwo = variableTwo;
+        this._result = result;
     }
 
     public void setID(int id) {
@@ -47,4 +56,21 @@ public class Question {
     public String getQuestionText() {
         return this._questiontext;
     }
+
+    public void setVariableOne(double variableOne) { this._variableOne = variableOne; }
+
+    public double getVariableOne() { return this._variableOne; }
+
+    public void setVariableTwo(double variableTwo) { this._variableTwo = variableTwo; }
+
+    public double getVariableTwo() { return this._variableTwo; }
+
+    public void setResult(double result) {
+        this._result = result;
+    }
+
+    public double getResult() {
+        return this._result;
+    }
+
 }

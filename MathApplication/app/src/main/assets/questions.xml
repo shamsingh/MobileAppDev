@@ -1,0 +1,66 @@
+<topics>
+    <addition>
+        <question>
+            <title></title>
+            <text>Drag the numbers to complete the question</text>
+            <variable number="1">2</variable>
+            <variable number="2">4</variable>
+            <result>6</result>
+        </question>
+        <question>
+            <title></title>
+            <text>Drag the numbers to complete the question</text>
+            <variable number="1">1</variable>
+            <variable number="2">9</variable>
+            <result>10</result>
+        </question>
+    </addition>
+    <subtraction>
+        <question>
+            <title></title>
+            <text>Drag the numbers to complete the question</text>
+            <variable number="1">5</variable>
+            <variable number="2">2</variable>
+            <result>3</result>
+        </question>
+        <question>
+            <title></title>
+            <text>Drag the numbers to complete the question</text>
+            <variable number="1">7</variable>
+            <variable number="2">4</variable>
+            <result>3</result>
+        </question>
+    </subtraction>
+    <multiplication>
+        <question>
+            <title></title>
+            <text>Drag the numbers to complete the question</text>
+            <variable number="1">4</variable>
+            <variable number="2">4</variable>
+            <result>16</result>
+        </question>
+        <question>
+            <title></title>
+            <text>Drag the numbers to complete the question</text>
+            <variable number="1">2</variable>
+            <variable number="2">10</variable>
+            <result>20</result>
+        </question>
+    </multiplication>
+    <division>
+        <question>
+            <title></title>
+            <text>Drag the numbers to complete the question</text>
+            <variable number="1">10</variable>
+            <variable number="2">2</variable>
+            <result>5</result>
+        </question>
+        <question>
+            <title></title>
+            <text>Drag the numbers to complete the question</text>
+            <variable number="1">6</variable>
+            <variable number="2">3</variable>
+            <result>2</result>
+        </question>
+    </division>
+</topics>
