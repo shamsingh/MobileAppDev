@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ScrollView
-        android:layout_width="100dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-        <fragment class="finalyear.coursework.coc115.mathapplication.topicFragment"
-            android:id="@+id/topic_frag_large"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </ScrollView>
-    <ScrollView
-        android:layout_width="100dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-        <fragment class="finalyear.coursework.coc115.mathapplication.questionListFragment"
-            android:id="@+id/question_list_frag_large"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </ScrollView>
+
 </LinearLayout>
