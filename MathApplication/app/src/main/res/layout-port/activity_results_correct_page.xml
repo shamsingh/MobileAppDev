@@ -37,7 +37,8 @@
         android:height="50dp"
         android:width="300dp"
         android:layout_below="@+id/replay_question_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="returnToMenuClick"/>
 
     <Button
         android:layout_width="wrap_content"
