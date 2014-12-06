@@ -8,6 +8,7 @@ public class Question {
     private int _id;
     private String _questiontitle;
     private String _questiontext;
+    private String _topicname;
     private double _variableOne;
     private double _variableTwo;
     private double _result;
@@ -16,18 +17,20 @@ public class Question {
 
     }
 
-    public Question(int id, String questiontitle, String questiontext, double variableOne, double variableTwo, double result) {
+    public Question(int id, String questiontitle, String questiontext, String topicname, double variableOne, double variableTwo, double result) {
         this._id = id;
         this._questiontitle = questiontitle;
         this._questiontext = questiontext;
+        this._topicname = topicname;
         this._variableOne = variableOne;
         this._variableTwo = variableTwo;
         this._result = result;
     }
 
-    public Question(String questiontitle, String questiontext, double variableOne, double variableTwo, double result) {
+    public Question(String questiontitle, String questiontext, String topicname, double variableOne, double variableTwo, double result) {
         this._questiontitle = questiontitle;
         this._questiontext = questiontext;
+        this._topicname = topicname;
         this._variableOne = variableOne;
         this._variableTwo = variableTwo;
         this._result = result;
@@ -55,6 +58,14 @@ public class Question {
 
     public String getQuestionText() {
         return this._questiontext;
+    }
+
+    public void setTopicName(String topicname) {
+        this._topicname = topicname;
+    }
+
+    public String getTopicName() {
+        return this._topicname;
     }
 
     public void setVariableOne(double variableOne) { this._variableOne = variableOne; }

@@ -1,5 +1,5 @@
 <topics>
-    <addition>
+    <topic id="addition">
         <question>
             <title></title>
             <text>Drag the numbers to complete the question</text>
@@ -14,8 +14,8 @@
             <variable number="2">9</variable>
             <result>10</result>
         </question>
-    </addition>
-    <subtraction>
+    </topic>
+    <topic id="subtraction">
         <question>
             <title></title>
             <text>Drag the numbers to complete the question</text>
@@ -30,8 +30,8 @@
             <variable number="2">4</variable>
             <result>3</result>
         </question>
-    </subtraction>
-    <multiplication>
+    </topic>
+    <topic id="multiplication">
         <question>
             <title></title>
             <text>Drag the numbers to complete the question</text>
@@ -46,8 +46,8 @@
             <variable number="2">10</variable>
             <result>20</result>
         </question>
-    </multiplication>
-    <division>
+    </topic>
+    <topic id="division">
         <question>
             <title></title>
             <text>Drag the numbers to complete the question</text>
@@ -62,5 +62,5 @@
             <variable number="2">3</variable>
             <result>2</result>
         </question>
-    </division>
+    </topic>
 </topics>
