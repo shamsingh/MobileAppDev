@@ -1,11 +1,13 @@
 package finalyear.coursework.coc115.mathapplication;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 
@@ -56,5 +58,9 @@ public class QuestionListActivity extends ActionBarActivity {
             actionBar.show();
             Toast.makeText(getApplicationContext(), "Tis Portrait", Toast.LENGTH_SHORT).show();
         }
+    }
+    public void returnToLandingPage(View v) {
+        Intent intent = new Intent(this, LandingActivity.class);
+        startActivity(intent);
     }
 }
