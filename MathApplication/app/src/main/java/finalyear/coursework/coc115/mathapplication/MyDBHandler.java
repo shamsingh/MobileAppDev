@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.List;
+
 /**
  * Created by Mark on 27/11/2014.
  */
@@ -39,6 +41,12 @@ public class MyDBHandler extends SQLiteOpenHelper {
                                     COLUMN_VARIABLETWO + " TEXT" +
                                     COLUMN_RESULT + " TEXT" + ")";
         db.execSQL(CREATE_QUESTION_TABLE);
+
+        List<Question> questionList = new Constants().GetAllQuestions();
+
+        for(Question question : questionList) {
+            addQuestion(question);
+        }
     }
 
     @Override

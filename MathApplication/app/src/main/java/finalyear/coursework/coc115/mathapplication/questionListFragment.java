@@ -1,6 +1,9 @@
 package finalyear.coursework.coc115.mathapplication;
 
 import android.app.Activity;
+import android.app.LoaderManager;
+import android.content.Loader;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -8,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.commonsware.cwac.loaderex.SQLiteCursorLoader;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,33 +21,13 @@ import android.view.ViewGroup;
  * Use the {@link questionListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class questionListFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+public class questionListFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
     private OnFragmentInteractionListener mListener;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment questionListFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+    private int LIST_ID = 0;
+
     public static questionListFragment newInstance(String param1, String param2) {
         questionListFragment fragment = new questionListFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -54,10 +38,7 @@ public class questionListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        getLoaderManager().initLoader(LIST_ID, null, this);
     }
 
     @Override
@@ -89,6 +70,28 @@ public class questionListFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        SQLiteCursorLoader dbLoader =
+                new SQLiteCursorLoader(
+                        getActivity().getApplicationContext(),
+                        new MyDBHandler(getActivity().getApplicationContext(), null, null, 1),
+                        "SELECT",
+                        new String[] {"some"}
+                );
+        return null;
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
     }
 
     /**
