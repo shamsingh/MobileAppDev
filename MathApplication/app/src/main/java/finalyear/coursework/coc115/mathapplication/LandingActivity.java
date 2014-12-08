@@ -47,4 +47,5 @@ public class LandingActivity extends ActionBarActivity {
         Intent intent = new Intent(this, TopicsPageActivity.class);
         startActivity(intent);
     }
+
 }

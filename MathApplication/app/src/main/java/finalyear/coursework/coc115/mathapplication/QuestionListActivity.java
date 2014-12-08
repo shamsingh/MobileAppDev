@@ -16,7 +16,7 @@ public class QuestionListActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_question_list);
+        setContentView(R.layout.fragment_question_list);
     }
 
 
@@ -61,6 +61,11 @@ public class QuestionListActivity extends ActionBarActivity {
     }
     public void returnToLandingPage(View v) {
         Intent intent = new Intent(this, LandingActivity.class);
+        startActivity(intent);
+    }
+
+    public void proceedToQuestion(View v) {
+        Intent intent = new Intent(this, QuestionPageActivity.class);
         startActivity(intent);
     }
 }

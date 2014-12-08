@@ -1,11 +1,16 @@
 package finalyear.coursework.coc115.mathapplication;
 
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 
@@ -15,10 +20,8 @@ public class TopicsPageActivity extends ActionBarActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_topics_page);
+        setContentView(R.layout.fragment_topic);
     }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -41,10 +44,15 @@ public class TopicsPageActivity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
-    public void onConfigurationChanged(Configuration config) {
-        super.onConfigurationChanged(config);
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
 
-        changeActionBar(config);
+        // Checks the orientation of the screen for landscape and portrait and set portrait mode always
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
     }
 
     private void changeActionBar(Configuration config) {
@@ -57,5 +65,10 @@ public class TopicsPageActivity extends ActionBarActivity
             actionBar.show();
             Toast.makeText(getApplicationContext(), "Tis Portrait", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void proceedToQuestionsListPage(View v) {
+        Intent intent = new Intent(this, QuestionListActivity.class);
+        startActivity(intent);
     }
 }
