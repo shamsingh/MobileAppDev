@@ -25,8 +25,11 @@ public class MyDBHandler extends SQLiteOpenHelper {
     private static final String COLUMN_VARIABLETWO = "variabletwo";
     private static final String COLUMN_RESULT = "result";
 
+    private static Context MyContext;
+
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
+        MyContext = context;
     }
 
     @Override
@@ -35,17 +38,17 @@ public class MyDBHandler extends SQLiteOpenHelper {
                                     TABLE_QUESTIONS + "(" +
                                     COLUMN_ID + " INTEGER PRIMARY KEY," +
                                     COLUMN_QUESTIONTITLE + " TEXT," +
-                                    COLUMN_QUESTIONTEXT + " TEXT" +
-                                    COLUMN_TOPICNAME + " TEXT" +
-                                    COLUMN_VARIABLEONE + " TEXT" +
-                                    COLUMN_VARIABLETWO + " TEXT" +
+                                    COLUMN_QUESTIONTEXT + " TEXT," +
+                                    COLUMN_TOPICNAME + " TEXT," +
+                                    COLUMN_VARIABLEONE + " TEXT," +
+                                    COLUMN_VARIABLETWO + " TEXT," +
                                     COLUMN_RESULT + " TEXT" + ")";
         db.execSQL(CREATE_QUESTION_TABLE);
 
-        List<Question> questionList = new Constants().GetAllQuestions();
+        List<Question> questionList = Constants.GetAllQuestions(MyContext);
 
         for(Question question : questionList) {
-            addQuestion(question);
+            addQuestion(question, db);
         }
     }
 
@@ -56,6 +59,16 @@ public class MyDBHandler extends SQLiteOpenHelper {
     }
 
     public void addQuestion(Question question) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.insert(TABLE_QUESTIONS, null, addQuestionFunc(question));
+        db.close();
+    }
+
+    public void addQuestion(Question question, SQLiteDatabase db) {
+        db.insert(TABLE_QUESTIONS, null, addQuestionFunc(question));
+    }
+
+    private ContentValues addQuestionFunc(Question question) {
         ContentValues values = new ContentValues();
         values.put(COLUMN_QUESTIONTITLE, question.getQuestionTitle());
         values.put(COLUMN_QUESTIONTEXT, question.getQuestionText());
@@ -64,9 +77,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         values.put(COLUMN_VARIABLETWO, String.valueOf(question.getVariableTwo()));
         values.put(COLUMN_RESULT, String.valueOf(question.getResult()));
 
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.insert(TABLE_QUESTIONS, null, values);
-        db.close();
+        return values;
     }
 
     public Question findQuestion(int questionID) {

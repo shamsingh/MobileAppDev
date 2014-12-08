@@ -1,6 +1,9 @@
 package finalyear.coursework.coc115.mathapplication;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -19,11 +22,13 @@ import javax.xml.parsers.DocumentBuilderFactory;
  */
 public class Constants extends Application {
 
-    public List<Question> GetAllQuestions() {
+    public static List<Question> GetAllQuestions(Context context) {
         List<Question> questionList = new ArrayList<Question>();
 
         try {
-            InputStream iS = getResources().getAssets().open("questions.xml");
+            Resources resources = context.getResources();
+            AssetManager assets = resources.getAssets();
+            InputStream iS = assets.open("questions.xml");
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document dom = builder.parse(iS);

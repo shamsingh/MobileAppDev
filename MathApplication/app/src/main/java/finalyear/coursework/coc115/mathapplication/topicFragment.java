@@ -10,6 +10,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 /**
@@ -72,6 +73,7 @@ public class topicFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
+        void topicButton_Click(View view);
     }
 
 }
