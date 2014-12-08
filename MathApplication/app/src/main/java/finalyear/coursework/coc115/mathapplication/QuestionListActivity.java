@@ -99,7 +99,6 @@ public class QuestionListActivity extends ListActivity implements LoaderManager.
         startActivity(intent);
     }
 
-
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String rawQuery = "Select * FROM questions WHERE topicname = \"" + TOPIC + "\"";

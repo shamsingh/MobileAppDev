@@ -19,7 +19,10 @@
         android:layout_marginTop="60dp"
         android:layout_marginLeft="300dp"
         android:width="185dp"
-        android:height="140dp" />
+        android:height="140dp"
+        android:background="@null"
+        android:onClick="proceedToQuestionsListPage"
+        />
 
     <Button
         android:layout_width="wrap_content"
@@ -28,24 +31,30 @@
         android:layout_marginTop="60dp"
         android:layout_marginLeft="535dp"
         android:width="185dp"
-        android:height="140dp" />
+        android:height="140dp"
+        android:background="@null"
+        android:onClick="proceedToQuestionsListPage"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/multiplication_button"
-        android:layout_marginTop="273dp"
+        android:layout_marginTop="265dp"
         android:layout_marginLeft="300dp"
         android:width="185dp"
-        android:height="140dp" />
+        android:height="140dp"
+        android:background="@null"
+        android:onClick="proceedToQuestionsListPage" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/division_button"
-        android:layout_marginTop="273dp"
+        android:layout_marginTop="265dp"
         android:layout_marginLeft="535dp"
         android:width="185dp"
-        android:height="140dp" />
+        android:height="140dp"
+        android:background="@null"
+        android:onClick="proceedToQuestionsListPage"/>
 
 </RelativeLayout>

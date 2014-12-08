@@ -9,6 +9,7 @@
     android:orientation="vertical"
     tools:context="finalyear.coursework.coc115.mathapplication.topicFragment"
     android:background="@drawable/topic"
+    
     >
 
     <Button
@@ -26,7 +27,6 @@
 
     <Button
         style="@style/topicButtons"
-        android:id="@+id/division_button"
-        android:onClick="topicButton_Click"/>
+        android:id="@+id/division_button"/>
 
 </LinearLayout>
