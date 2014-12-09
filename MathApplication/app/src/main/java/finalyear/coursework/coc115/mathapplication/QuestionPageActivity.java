@@ -21,7 +21,7 @@ public class QuestionPageActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drag_drop);
+        setContentView(R.layout.activity_question_page);
 
         //views to drag
         option1 = (TextView)findViewById(R.id.option_1);
@@ -109,12 +109,7 @@ public class QuestionPageActivity extends ActionBarActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.drag_drop, menu);
-        return true;
-    }
+
 
 
     @Override
