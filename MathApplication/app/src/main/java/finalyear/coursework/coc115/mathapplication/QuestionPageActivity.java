@@ -1,5 +1,6 @@
 package finalyear.coursework.coc115.mathapplication;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -9,6 +10,7 @@ import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class QuestionPageActivity extends ActionBarActivity {
@@ -16,6 +18,8 @@ public class QuestionPageActivity extends ActionBarActivity {
     private TextView variable1, variable2, variable3, variable4, choice1, choice2;
 
     private Question question;
+
+    String chosenVar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +42,14 @@ public class QuestionPageActivity extends ActionBarActivity {
         variable3.setOnTouchListener(new ChoiceTouchListener());
         variable4.setOnTouchListener(new ChoiceTouchListener());
 
+        ((TextView)findViewById(R.id.text)).setText(question.getQuestionText());
+
         //set the variable values
         if(question.getQuestionTitle().contains("Hard")) {
             //this is a hard question
             Double missingVar = question.getVariableOne();
-            String[] arrayls = new String[] { Double.toString(missingVar), Double.toString(missingVar*2), Double.toString(missingVar - 2), Double.toString(missingVar + 3) };
+            chosenVar = Integer.toString((int)Math.round(missingVar));
+            String[] arrayls = new String[] { Integer.toString((int) Math.round(missingVar)), Integer.toString((int) Math.round(missingVar * 2)), Integer.toString((int)Math.round(missingVar - 2)), Integer.toString((int)Math.round(missingVar + 3)) };
 
             variable1.setText(arrayls[3]);
             variable2.setText(arrayls[0]);
@@ -63,22 +70,23 @@ public class QuestionPageActivity extends ActionBarActivity {
             } else if(topicName.equals("subtraction")) {
                 operation = "-";
             } else if(topicName.equals("multiplication")) {
-                operation = "\\\u00D7";
+                operation = "\u00D7";
             } else {
-                operation = "\\\u00F7";
+                operation = "\u00F7";
             }
 
             choice2.setText(operation);
 
             choice2 = (TextView)findViewById(R.id.choice_2);
-            choice2.setText(Double.toString(question.getVariableTwo()));
+            choice2.setText(Integer.toString((int) Math.round(question.getVariableTwo())));
 
             choice2 = (TextView)findViewById(R.id.result);
-            choice2.setText(Double.toString(question.getResult()));
+            choice2.setText(Integer.toString((int) Math.round(question.getResult())));
         } else {
             //this is an easy question
             Double missingVar = question.getResult();
-            String[] arrayls = new String[] { Double.toString(missingVar), Double.toString(missingVar*2), Double.toString(missingVar - 2), Double.toString(missingVar + 3) };
+            chosenVar = Integer.toString((int)Math.round(missingVar));
+            String[] arrayls = new String[] { Integer.toString((int) Math.round(missingVar)), Integer.toString((int) Math.round(missingVar * 2)), Integer.toString((int)Math.round(missingVar - 2)), Integer.toString((int)Math.round(missingVar + 3)) };
 
             variable1.setText(arrayls[2]);
             variable2.setText(arrayls[3]);
@@ -99,18 +107,18 @@ public class QuestionPageActivity extends ActionBarActivity {
             } else if(topicName.equals("subtraction")) {
                 operation = "-";
             } else if(topicName.equals("multiplication")) {
-                operation = "\\\u00D7";
+                operation = "\u00D7";
             } else {
-                operation = "\\\u00F7";
+                operation = "\u00F7";
             }
 
             choice2.setText(operation);
 
             choice2 = (TextView)findViewById(R.id.choice_2);
-            choice2.setText(Double.toString(question.getVariableTwo()));
+            choice2.setText(Integer.toString((int) Math.round(question.getVariableTwo())));
 
             choice2 = (TextView)findViewById(R.id.choice_1);
-            choice2.setText(Double.toString(question.getVariableOne()));
+            choice2.setText(Integer.toString((int) Math.round(question.getVariableOne())));
         }
     }
 
@@ -182,9 +190,6 @@ public class QuestionPageActivity extends ActionBarActivity {
         }
     }
 
-
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -198,5 +203,20 @@ public class QuestionPageActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onSubmit(View view) {
+        if(choice1.getText().equals("?")) {
+            Toast.makeText(getApplicationContext(), "Please enter your choice!", Toast.LENGTH_LONG).show();
+        } else {
+            //check answer
+            Intent newIntent = new Intent(getApplicationContext(), ResultsPageActivity.class);
+            if(choice1.getText().equals(chosenVar)) {
+                newIntent.putExtra("result", true);
+            } else {
+                newIntent.putExtra("result", false);
+            }
+            startActivity(newIntent);
+        }
     }
 }

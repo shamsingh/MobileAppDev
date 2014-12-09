@@ -39,10 +39,10 @@
         <activity
             android:name="finalyear.coursework.coc115.mathapplication.QuestionPageActivity"
             android:label="@string/title_activity_question_page"
-            android:parentActivityName="finalyear.coursework.coc115.mathapplication.TopicsPageActivity" >
+            android:parentActivityName="finalyear.coursework.coc115.mathapplication.QuestionListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="finalyear.coursework.coc115.mathapplication.TopicsPageActivity" />
+                android:value="finalyear.coursework.coc115.mathapplication.QuestionListActivity" />
         </activity>
         <activity
             android:name="finalyear.coursework.coc115.mathapplication.ResultsPageActivity"

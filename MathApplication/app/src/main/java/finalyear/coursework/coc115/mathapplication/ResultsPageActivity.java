@@ -24,7 +24,11 @@ public class ResultsPageActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_results_page);
+        if(getIntent().getBooleanExtra("result", false)) {
+            setContentView(R.layout.activity_results_correct_page);
+        } else {
+            setContentView(R.layout.activity_results_wrong_page);
+        }
 
         uiHelper = new UiLifecycleHelper(this, null);
         uiHelper.onCreate(savedInstanceState);

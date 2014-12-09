@@ -1,54 +1,31 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".LandingActivity"
+    android:orientation="vertical"
+    tools:context="finalyear.coursework.coc115.mathapplication.ResultsPageActivity"
     android:background="@drawable/correct"
     >
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/next_question_button"
-        android:layout_marginBottom="150dp"
-        android:height="50dp"
-        android:width="300dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/replay_question_button"
-        android:layout_marginTop="55dp"
-        android:height="50dp"
-        android:width="300dp"
-        android:layout_alignTop="@+id/next_question_button"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/main_menu_button"
-        android:height="50dp"
-        android:width="300dp"
-        android:layout_below="@+id/replay_question_button"
-        android:layout_centerHorizontal="true"
-        android:onClick="returnToMenuClick"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:id="@+id/facebook_button"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="36dp"
-        android:layout_marginLeft="20dp"
-        android:width="50dp"
-        android:height="50dp" />
-</RelativeLayout>
+        android:onClick="shareToFacebook"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:background="@android:color/transparent"/>
+
+    <Button
+        style="@style/resultButton"
+        android:layout_marginTop="260dp"
+        android:id="@+id/replay_question_button"/>
+
+    <Button
+        style="@style/resultButton"
+        android:id="@+id/next_question_button"/>
+
+    <Button
+        style="@style/resultButton"
+        android:id="@+id/return_to_menu_button"/>
+</LinearLayout>
