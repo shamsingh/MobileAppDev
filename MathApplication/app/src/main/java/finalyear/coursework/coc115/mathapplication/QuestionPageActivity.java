@@ -14,14 +14,16 @@ import android.widget.TextView;
 
 public class QuestionPageActivity extends ActionBarActivity {
 
-    //sham- drag and drop
-
     private TextView option1, option2, choice1, choice2;
+
+    private int QuestionID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_page);
+
+        QuestionID = Integer.parseInt(getIntent().getStringExtra("questionID"));
 
         //views to drag
         option1 = (TextView)findViewById(R.id.option_1);

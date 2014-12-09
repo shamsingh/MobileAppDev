@@ -84,8 +84,8 @@ public class TopicsPageActivity extends ActionBarActivity
                 break;
         }
 
-        Intent newIntent = new Intent(getApplicationContext(), ResultsPageActivity.class);
-        //newIntent.putExtra("topicChosen", name);
+        Intent newIntent = new Intent(getApplicationContext(), QuestionListActivity.class);
+        newIntent.putExtra("topicChosen", name);
         startActivity(newIntent);
     }
 }

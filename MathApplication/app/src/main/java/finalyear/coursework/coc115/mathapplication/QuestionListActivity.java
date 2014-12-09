@@ -56,8 +56,8 @@ public class QuestionListActivity extends ListActivity implements LoaderManager.
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 SQLiteCursor cursor = (SQLiteCursor) mAdapter.getItem(position);
                 int ID = (int) cursor.getLong(cursor.getColumnIndex("_id"));
-                Intent newIntent = new Intent(getApplicationContext(), QuestionPageActivity.class);
 
+                Intent newIntent = new Intent(getApplicationContext(), QuestionPageActivity.class);
                 newIntent.putExtra("questionID", ID);
                 startActivity(newIntent);
             }
