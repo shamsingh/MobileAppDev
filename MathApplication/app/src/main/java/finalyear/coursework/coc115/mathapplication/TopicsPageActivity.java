@@ -84,8 +84,8 @@ public class TopicsPageActivity extends ActionBarActivity
                 break;
         }
 
-        Intent newIntent = new Intent(this, finalyear.coursework.coc115.mathapplication.QuestionListActivity.class);
-        newIntent.putExtra("topicChosen", name);
+        Intent newIntent = new Intent(getApplicationContext(), ResultsPageActivity.class);
+        //newIntent.putExtra("topicChosen", name);
         startActivity(newIntent);
     }
 }
