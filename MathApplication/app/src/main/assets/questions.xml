@@ -1,14 +1,14 @@
 <topics>
     <topic id="addition">
         <question>
-            <title></title>
+            <title>Easy Addition</title>
             <text>Drag the numbers to complete the question</text>
             <variable number="1">2</variable>
             <variable number="2">4</variable>
             <result>6</result>
         </question>
         <question>
-            <title></title>
+            <title>Hard Addition</title>
             <text>Drag the numbers to complete the question</text>
             <variable number="1">1</variable>
             <variable number="2">9</variable>
@@ -17,14 +17,14 @@
     </topic>
     <topic id="subtraction">
         <question>
-            <title></title>
+            <title>Easy Subtraction</title>
             <text>Drag the numbers to complete the question</text>
             <variable number="1">5</variable>
             <variable number="2">2</variable>
             <result>3</result>
         </question>
         <question>
-            <title></title>
+            <title>Hard Subtraction</title>
             <text>Drag the numbers to complete the question</text>
             <variable number="1">7</variable>
             <variable number="2">4</variable>
@@ -33,14 +33,14 @@
     </topic>
     <topic id="multiplication">
         <question>
-            <title></title>
+            <title>Easy Multiplication</title>
             <text>Drag the numbers to complete the question</text>
             <variable number="1">4</variable>
             <variable number="2">4</variable>
             <result>16</result>
         </question>
         <question>
-            <title></title>
+            <title>Hard Multiplication</title>
             <text>Drag the numbers to complete the question</text>
             <variable number="1">2</variable>
             <variable number="2">10</variable>
@@ -49,14 +49,14 @@
     </topic>
     <topic id="division">
         <question>
-            <title></title>
+            <title>Easy Division</title>
             <text>Drag the numbers to complete the question</text>
             <variable number="1">10</variable>
             <variable number="2">2</variable>
             <result>5</result>
         </question>
         <question>
-            <title></title>
+            <title>Hard Division</title>
             <text>Drag the numbers to complete the question</text>
             <variable number="1">6</variable>
             <variable number="2">3</variable>

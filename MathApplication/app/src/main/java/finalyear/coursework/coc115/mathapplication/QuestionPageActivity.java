@@ -2,7 +2,6 @@ package finalyear.coursework.coc115.mathapplication;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.content.ClipData;
 import android.graphics.Typeface;
@@ -14,33 +13,105 @@ import android.widget.TextView;
 
 public class QuestionPageActivity extends ActionBarActivity {
 
-    private TextView option1, option2, choice1, choice2;
+    private TextView variable1, variable2, variable3, variable4, choice1, choice2;
 
-    private int QuestionID;
+    private Question question;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question_page);
 
-        QuestionID = Integer.parseInt(getIntent().getStringExtra("questionID"));
+        //get the question from the given ID
+        MyDBHandler dbHandler = new MyDBHandler(this, null, null, 1);
+        question = dbHandler.findQuestion(getIntent().getIntExtra("questionID", -1));
 
         //views to drag
-        option1 = (TextView)findViewById(R.id.option_1);
-        option2 = (TextView)findViewById(R.id.option_2);
-
-        //views to drop onto
-        choice1 = (TextView)findViewById(R.id.choice_1);
-        choice2 = (TextView)findViewById(R.id.choice_2);
+        variable1 = (TextView)findViewById(R.id.variable_1);
+        variable2 = (TextView)findViewById(R.id.variable_2);
+        variable3 = (TextView)findViewById(R.id.variable_3);
+        variable4 = (TextView)findViewById(R.id.variable_4);
 
         //set touch listeners
-        option1.setOnTouchListener(new ChoiceTouchListener());
-        option2.setOnTouchListener(new ChoiceTouchListener());
+        variable1.setOnTouchListener(new ChoiceTouchListener());
+        variable2.setOnTouchListener(new ChoiceTouchListener());
+        variable3.setOnTouchListener(new ChoiceTouchListener());
+        variable4.setOnTouchListener(new ChoiceTouchListener());
 
-        //set drag listeners
-        choice1.setOnDragListener(new ChoiceDragListener());
-        choice2.setOnDragListener(new ChoiceDragListener());
+        //set the variable values
+        if(question.getQuestionTitle().contains("Hard")) {
+            //this is a hard question
+            Double missingVar = question.getVariableOne();
+            String[] arrayls = new String[] { Double.toString(missingVar), Double.toString(missingVar*2), Double.toString(missingVar - 2), Double.toString(missingVar + 3) };
 
+            variable1.setText(arrayls[3]);
+            variable2.setText(arrayls[0]);
+            variable3.setText(arrayls[1]);
+            variable4.setText(arrayls[2]);
+
+            //views to drop onto
+            choice1 = (TextView)findViewById(R.id.choice_1);
+            //set drag listeners
+            choice1.setOnDragListener(new ChoiceDragListener());
+
+            //set other variables
+            choice2 = (TextView)findViewById(R.id.operation_1);
+            String operation;
+            String topicName = question.getTopicName();
+            if(topicName.equals("addition")) {
+                operation = "+";
+            } else if(topicName.equals("subtraction")) {
+                operation = "-";
+            } else if(topicName.equals("multiplication")) {
+                operation = "\\\u00D7";
+            } else {
+                operation = "\\\u00F7";
+            }
+
+            choice2.setText(operation);
+
+            choice2 = (TextView)findViewById(R.id.choice_2);
+            choice2.setText(Double.toString(question.getVariableTwo()));
+
+            choice2 = (TextView)findViewById(R.id.result);
+            choice2.setText(Double.toString(question.getResult()));
+        } else {
+            //this is an easy question
+            Double missingVar = question.getResult();
+            String[] arrayls = new String[] { Double.toString(missingVar), Double.toString(missingVar*2), Double.toString(missingVar - 2), Double.toString(missingVar + 3) };
+
+            variable1.setText(arrayls[2]);
+            variable2.setText(arrayls[3]);
+            variable3.setText(arrayls[0]);
+            variable4.setText(arrayls[1]);
+
+            //views to drop onto
+            choice1 = (TextView)findViewById(R.id.result);
+            //set drag listeners
+            choice1.setOnDragListener(new ChoiceDragListener());
+
+            //set other variables
+            choice2 = (TextView)findViewById(R.id.operation_1);
+            String operation;
+            String topicName = question.getTopicName();
+            if(topicName.equals("addition")) {
+                operation = "+";
+            } else if(topicName.equals("subtraction")) {
+                operation = "-";
+            } else if(topicName.equals("multiplication")) {
+                operation = "\\\u00D7";
+            } else {
+                operation = "\\\u00F7";
+            }
+
+            choice2.setText(operation);
+
+            choice2 = (TextView)findViewById(R.id.choice_2);
+            choice2.setText(Double.toString(question.getVariableTwo()));
+
+            choice2 = (TextView)findViewById(R.id.choice_1);
+            choice2.setText(Double.toString(question.getVariableOne()));
+        }
     }
 
     private final class ChoiceTouchListener implements View.OnTouchListener {

@@ -43,28 +43,6 @@ public class TopicsPageActivity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-        // Checks the orientation of the screen for landscape and portrait and set portrait mode always
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
-    }
-
-    private void changeActionBar(Configuration config) {
-        ActionBar actionBar = getSupportActionBar();
-        if(config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            actionBar.hide();
-            Toast.makeText(getApplicationContext(), "Tis Landscape", Toast.LENGTH_SHORT).show();
-        }
-        else if(config.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            actionBar.show();
-            Toast.makeText(getApplicationContext(), "Tis Portrait", Toast.LENGTH_SHORT).show();
-        }
-    }
 
     @Override
     public void topicButton_Click(View view) {
