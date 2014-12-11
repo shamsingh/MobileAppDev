@@ -11,19 +11,19 @@
     android:background="@drawable/topic" >
 
     <Button
-        style="@style/topicButtons"
-        android:layout_marginTop="238dp"
+        style="@style/topicButtonsBig"
+        android:layout_marginTop="390dp"
         android:id="@+id/addition_button"/>
 
     <Button
-        style="@style/topicButtons"
+        style="@style/topicButtonsBig"
         android:id="@+id/subtraction_button"/>
 
     <Button
-        style="@style/topicButtons"
+        style="@style/topicButtonsBig"
         android:id="@+id/multiplication_button"/>
 
     <Button
-        style="@style/topicButtons"
+        style="@style/topicButtonsBig"
         android:id="@+id/division_button"/>
 </LinearLayout>

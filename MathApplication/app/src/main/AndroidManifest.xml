@@ -2,9 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="finalyear.coursework.coc115.mathapplication" >
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <meta-data
@@ -39,10 +42,10 @@
         <activity
             android:name="finalyear.coursework.coc115.mathapplication.QuestionPageActivity"
             android:label="@string/title_activity_question_page"
-            android:parentActivityName="finalyear.coursework.coc115.mathapplication.QuestionListActivity" >
+            android:parentActivityName="finalyear.coursework.coc115.mathapplication.TopicsPageActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="finalyear.coursework.coc115.mathapplication.QuestionListActivity" />
+                android:value="finalyear.coursework.coc115.mathapplication.TopicsPageActivity" />
         </activity>
         <activity
             android:name="finalyear.coursework.coc115.mathapplication.ResultsPageActivity"

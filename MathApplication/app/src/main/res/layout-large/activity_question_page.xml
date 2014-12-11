@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/text"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textColor="@android:color/black"
         android:text="This is placeholder text to be replaced at runtime"
         android:layout_gravity="center"/>
@@ -28,7 +28,7 @@
             android:background="@drawable/options"
             android:gravity="center"
             android:layout_weight="1"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
         <TextView
             android:id="@+id/variable_2"
@@ -38,7 +38,7 @@
             android:layout_margin="5dp"
             android:background="@drawable/options"
             android:gravity="center"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
         <TextView
             android:id="@+id/variable_3"
@@ -48,7 +48,7 @@
             android:background="@drawable/options"
             android:gravity="center"
             android:layout_weight="1"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
         <TextView
             android:id="@+id/variable_4"
@@ -58,7 +58,7 @@
             android:layout_margin="5dp"
             android:background="@drawable/options"
             android:gravity="center"
-            android:textSize="25sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
     </LinearLayout>
 

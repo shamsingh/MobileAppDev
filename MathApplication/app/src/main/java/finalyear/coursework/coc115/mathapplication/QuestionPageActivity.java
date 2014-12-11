@@ -211,6 +211,7 @@ public class QuestionPageActivity extends ActionBarActivity {
         } else {
             //check answer
             Intent newIntent = new Intent(getApplicationContext(), ResultsPageActivity.class);
+            newIntent.putExtra("questionID", question.getID());
             if(choice1.getText().equals(chosenVar)) {
                 newIntent.putExtra("result", true);
             } else {

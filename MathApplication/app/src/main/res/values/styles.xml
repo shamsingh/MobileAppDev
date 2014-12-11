@@ -17,9 +17,28 @@
         <item name="android:onClick">topicButton_Click</item>
     </style>
 
+    <style name="topicButtonsBig">
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:layout_height">105dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:onClick">topicButton_Click</item>
+    </style>
+
     <style name="topicButtonsLand">
         <item name="android:layout_height">110dp</item>
         <item name="android:layout_width">150dp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:onClick">topicButton_Click</item>
+    </style>
+
+    <style name="topicButtonsLandBig">
+        <item name="android:layout_height">175dp</item>
+        <item name="android:layout_width">250dp</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:onClick">topicButton_Click</item>
     </style>
@@ -31,12 +50,20 @@
         <item name="android:layout_margin">5dp</item>
         <item name="android:background">@drawable/choice</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">24sp</item>
     </style>
 
     <style name="resultButton">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">40dp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_marginRight">40dp</item>
+    </style>
+
+    <style name="resultButtonBig">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">70dp</item>
         <item name="android:layout_marginLeft">40dp</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:layout_marginRight">40dp</item>

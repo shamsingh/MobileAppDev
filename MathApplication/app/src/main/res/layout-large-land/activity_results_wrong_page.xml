@@ -18,23 +18,23 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:height="70dp"
-        android:width="150dp"
+        android:height="100dp"
+        android:width="250dp"
         android:onClick="replayQuestion"
         android:background="@android:color/transparent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="25dp"
         />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/next_question_button_land"
-        android:height="70dp"
-        android:width="150dp"
+        android:height="100dp"
+        android:width="200dp"
         android:background="@android:color/transparent"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="350dp"
         android:onClick="nextQuestion"/>
 
     <Button
@@ -42,9 +42,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/main_menu_button_land"
         android:layout_alignParentRight="true"
-        android:height="100dp"
-        android:width="160dp"
-        android:layout_marginTop="200dp"
+        android:height="150dp"
+        android:width="220dp"
+        android:layout_marginTop="340dp"
         android:background="@android:color/transparent"
         android:onClick="menuButton"/>
 
@@ -55,6 +55,6 @@
         android:layout_alignParentTop="true"
         android:background="@android:color/transparent"
         android:onClick="shareToFacebook"
-        android:width="100dp"
-        android:height="100dp"/>
+        android:width="130dp"
+        android:height="130dp"/>
 </RelativeLayout>

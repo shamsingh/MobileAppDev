@@ -1,6 +1,10 @@
 package finalyear.coursework.coc115.mathapplication;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,8 +12,25 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.facebook.AppEventsLogger;
+
 
 public class LandingActivity extends ActionBarActivity {
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Logs 'install' and 'app activate' App Events.
+        AppEventsLogger.activateApp(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // Logs 'app deactivate' App Event.
+        AppEventsLogger.deactivateApp(this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,4 +69,35 @@ public class LandingActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    public void onNotification(View v) {
+        //create notification
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.icon)
+                .setContentTitle("It's been a while!")
+                .setContentText("Why not give some Maths a go?")
+                .setAutoCancel(true)
+                .setVibrate(new long[] {1000, 500, 1000, 500})
+                .setLights(Color.MAGENTA, 2000, 4000);
+
+        //create intent for notification to load
+        Intent resultIntent = new Intent(this, TopicsPageActivity.class);
+
+        PendingIntent resultPendingIntent =
+                PendingIntent.getActivity(
+                        this,
+                        0,
+                        resultIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+
+        //set the intent to the notification
+        mBuilder.setContentIntent(resultPendingIntent);
+
+        // Sets an ID for the notification
+        int mNotificationId = 001;
+        // Gets an instance of the NotificationManager service
+        NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        // Builds the notification and issues it.
+        mNotifyMgr.notify(mNotificationId, mBuilder.build());
+    }
 }

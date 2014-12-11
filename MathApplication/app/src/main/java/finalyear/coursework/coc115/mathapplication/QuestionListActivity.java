@@ -94,10 +94,6 @@ public class QuestionListActivity extends ListActivity implements LoaderManager.
         super.onConfigurationChanged(config);
     }
 
-    public void returnToLandingPage(View v) {
-        Intent intent = new Intent(this, LandingActivity.class);
-        startActivity(intent);
-    }
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {

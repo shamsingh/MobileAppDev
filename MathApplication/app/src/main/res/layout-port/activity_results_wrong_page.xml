@@ -19,13 +19,16 @@
     <Button
         style="@style/resultButton"
         android:layout_marginTop="260dp"
-        android:id="@+id/replay_question_button"/>
+        android:id="@+id/replay_question_button"
+        android:onClick="replayQuestion"/>
 
     <Button
         style="@style/resultButton"
-        android:id="@+id/next_question_button"/>
+        android:id="@+id/next_question_button"
+        android:onClick="nextQuestion"/>
 
     <Button
         style="@style/resultButton"
-        android:id="@+id/return_to_menu_button"/>
+        android:id="@+id/return_to_menu_button"
+        android:onClick="menuButton"/>
 </LinearLayout>

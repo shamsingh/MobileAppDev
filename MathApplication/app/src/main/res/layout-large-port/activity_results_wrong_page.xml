@@ -4,12 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="finalyear.coursework.coc115.mathapplication.ResultsPageActivity"
-    android:background="@drawable/correct"
+    android:background="@drawable/wrong"
     >
 
     <Button
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:id="@+id/facebook_button"
         android:onClick="shareToFacebook"
         android:layout_marginTop="30dp"
@@ -17,18 +17,18 @@
         android:background="@android:color/transparent"/>
 
     <Button
-        style="@style/resultButton"
-        android:layout_marginTop="260dp"
-        android:id="@+id/next_question_button"
-        android:onClick="nextQuestion"/>
-
-    <Button
-        style="@style/resultButton"
+        style="@style/resultButtonBig"
+        android:layout_marginTop="410dp"
         android:id="@+id/replay_question_button"
         android:onClick="replayQuestion"/>
 
     <Button
-        style="@style/resultButton"
+        style="@style/resultButtonBig"
+        android:id="@+id/next_question_button"
+        android:onClick="nextQuestion"/>
+
+    <Button
+        style="@style/resultButtonBig"
         android:id="@+id/return_to_menu_button"
         android:onClick="menuButton"/>
 </LinearLayout>

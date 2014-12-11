@@ -13,8 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Notification"
-        android:layout_marginLeft="200dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginLeft="350dp"
+        android:textSize="25dp"
+        android:layout_marginTop="200dp"
         android:background="@android:color/transparent"
         android:textColor="@android:color/holo_blue_dark"
         android:onClick="onNotification"/>
@@ -23,8 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/start_button"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="450dp"
+        android:layout_marginLeft="340dp"
+        android:layout_marginTop="730dp"
         android:src="@drawable/start"
         android:onClick="startButtonClick"/>
 </RelativeLayout>

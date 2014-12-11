@@ -20,6 +20,8 @@ import com.facebook.widget.WebDialog;
 public class ResultsPageActivity extends ActionBarActivity {
 
     private UiLifecycleHelper uiHelper;
+    private Question question;
+    MyDBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,10 @@ public class ResultsPageActivity extends ActionBarActivity {
         } else {
             setContentView(R.layout.activity_results_wrong_page);
         }
+
+        //get the question from the given ID
+        dbHandler = new MyDBHandler(this, null, null, 1);
+        question = dbHandler.findQuestion(getIntent().getIntExtra("questionID", -1));
 
         uiHelper = new UiLifecycleHelper(this, null);
         uiHelper.onCreate(savedInstanceState);
@@ -80,38 +86,13 @@ public class ResultsPageActivity extends ActionBarActivity {
         uiHelper.onDestroy();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_results_page, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-    public void returnToMenuClick(View v) {
-        Intent intent = new Intent(this, QuestionListActivity.class);
-        startActivity(intent);
-    }
-
     public void shareToFacebook(View v) {
         if(FacebookDialog.canPresentShareDialog(getApplicationContext(), FacebookDialog.ShareDialogFeature.SHARE_DIALOG)) {
             //Publish post using share builder
             FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(this)
-                    .setApplicationName("TeadiaUK")
+                    .setLink("http://facebook.com")
                     .build();
+
             uiHelper.trackPendingDialogCall((shareDialog.present()));
         } else {
             //Fallback, using the Feed dialog
@@ -120,13 +101,16 @@ public class ResultsPageActivity extends ActionBarActivity {
         }
     }
 
-    private void publishFeedDialog() {Bundle params = new Bundle();
+    private void publishFeedDialog() {
+        //Make new bundle
+        Bundle params = new Bundle();
         params.putString("name", "Teadia");
         params.putString("caption", "Try and beat this score!");
         params.putString("description", "You did well!");
         params.putString("link", "https://github.com/shamsingh/MobileAppDev");
         params.putString("picture", "https://raw.github.com/fbsamples/ios-3.x-howtos/master/Images/iossdk_logo.png");
 
+        //create new web dialog
         WebDialog feedDialog = (
                 new WebDialog.FeedDialogBuilder(getApplicationContext(),
                         Session.getActiveSession(),
@@ -165,6 +149,38 @@ public class ResultsPageActivity extends ActionBarActivity {
 
                 })
                 .build();
+        //show web dialog
         feedDialog.show();
     }
+
+    public void nextQuestion(View v) {
+        //get the next question ID
+        Question nextQuestion = dbHandler.findQuestion(question.getID()+1);
+
+        //find if next question exists
+        if(nextQuestion == null) {
+            //Go to topics page
+            Toast.makeText(this, "No next question found", Toast.LENGTH_SHORT).show();
+            Intent newIntent = new Intent(this, TopicsPageActivity.class);
+            startActivity(newIntent);
+        } else {
+            //Go to next question
+            Intent newIntent = new Intent(this, QuestionPageActivity.class);
+            newIntent.putExtra("questionID", nextQuestion.getID());
+            startActivity(newIntent);
+        }
+    }
+
+    public void replayQuestion(View v) {
+        //go back to question page
+        Intent newIntent = new Intent(this, QuestionPageActivity.class);
+        newIntent.putExtra("questionID", question.getID());
+        startActivity(newIntent);
+    }
+
+    public void menuButton(View v) {
+        Intent intent = new Intent(this, TopicsPageActivity.class);
+        startActivity(intent);
+    }
+
 }

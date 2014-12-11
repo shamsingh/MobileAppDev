@@ -10,5 +10,4 @@
     android:background="@drawable/qlisting"
     android:id="@android:id/list"
     >
-
 </ListView>
