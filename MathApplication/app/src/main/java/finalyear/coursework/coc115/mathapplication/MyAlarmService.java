@@ -30,12 +30,15 @@ public class MyAlarmService extends Service {
     public void onStart(Intent intent, int startId) {
         super.onStart(intent, startId);
 
+        //create notification manager
         mManager = (NotificationManager) this.getApplicationContext().getSystemService(this.getApplicationContext().NOTIFICATION_SERVICE);
         Intent intent1 = new Intent(this.getApplicationContext(), LandingActivity.class);
 
+        // create initial notification alert
         Notification notification = new Notification(R.drawable.icon, "Hey, it's been a while...", System.currentTimeMillis());
         intent1.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP| Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
+        //get the pending intent and add the notification
         PendingIntent pendingNotificationIntent = PendingIntent.getActivity( this.getApplicationContext(), 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
         notification.flags |= Notification.FLAG_AUTO_CANCEL;
         notification.setLatestEventInfo(this.getApplicationContext(), "It's been a while!", "Why not give some Maths a go?", pendingNotificationIntent);
@@ -45,7 +48,6 @@ public class MyAlarmService extends Service {
 
     @Override
     public void onDestroy() {
-        // TODO Auto-generated method stub
         super.onDestroy();
     }
 }

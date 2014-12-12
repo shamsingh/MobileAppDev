@@ -29,11 +29,13 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
+        // save context for later use
         MyContext = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        //create table
         String CREATE_QUESTION_TABLE = "CREATE TABLE " +
                                     TABLE_QUESTIONS + "(" +
                                     COLUMN_ID + " INTEGER PRIMARY KEY," +
@@ -45,6 +47,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
                                     COLUMN_RESULT + " TEXT" + ")";
         db.execSQL(CREATE_QUESTION_TABLE);
 
+        //get all questions from the file
         List<Question> questionList = Constants.GetAllQuestions(MyContext);
 
         for(Question question : questionList) {
@@ -59,16 +62,19 @@ public class MyDBHandler extends SQLiteOpenHelper {
     }
 
     public void addQuestion(Question question) {
+        //normal add question, use if have already created db
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(TABLE_QUESTIONS, null, addQuestionFunc(question));
         db.close();
     }
 
     public void addQuestion(Question question, SQLiteDatabase db) {
+        //add question to use if on create
         db.insert(TABLE_QUESTIONS, null, addQuestionFunc(question));
     }
 
     private ContentValues addQuestionFunc(Question question) {
+        //set data in database table row
         ContentValues values = new ContentValues();
         values.put(COLUMN_QUESTIONTITLE, question.getQuestionTitle());
         values.put(COLUMN_QUESTIONTEXT, question.getQuestionText());
@@ -81,6 +87,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     }
 
     public Question findQuestion(int questionID) {
+        //make query
         String query = "Select * FROM " + TABLE_QUESTIONS + " WHERE " + COLUMN_ID + " = \"" + questionID + "\"";
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -88,6 +95,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
         Question question = new Question();
 
+        //create question from row result
         if(cursor.moveToFirst()) {
             cursor.moveToFirst();
             question.setID(Integer.parseInt(cursor.getString(0)));
@@ -101,6 +109,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         } else {
             question = null;
         }
+        //close the database
         db.close();
         return question;
     }
@@ -108,6 +117,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public boolean deleteQuestion(int questionID) {
         boolean result = false;
 
+        //create query
         String query = "Select * FROM " + TABLE_QUESTIONS + " WHERE " + COLUMN_ID + " = \"" + questionID + "\"";
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -116,6 +126,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
         Question question = new Question();
 
+        //make sure result is what you want
         if(cursor.moveToFirst()) {
             question.setID(Integer.parseInt(cursor.getString(0)));
             db.delete(TABLE_QUESTIONS, COLUMN_ID + " = ?",
@@ -123,6 +134,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
             cursor.close();
             result = true;
         }
+        //close database
         db.close();
         return result;
     }

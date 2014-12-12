@@ -25,9 +25,11 @@ public class Constants extends Application {
     public static List<Question> GetAllQuestions(Context context) {
         List<Question> questionList = new ArrayList<Question>();
 
+        //attempt to get resources
         try {
             Resources resources = context.getResources();
             AssetManager assets = resources.getAssets();
+            //open file
             InputStream iS = assets.open("questions.xml");
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -35,13 +37,16 @@ public class Constants extends Application {
 
             dom.getDocumentElement().normalize();
 
+            //read from file
             NodeList topicList = dom.getElementsByTagName("topic");
 
+            //foreach topic:
             for(int temp = 0; temp < topicList.getLength(); temp++) {
                 Node nTopic = topicList.item(temp);
 
                 if(nTopic.getNodeType() == Node.ELEMENT_NODE) {
 
+                    //foreach question:
                     Element eTopic = (Element)nTopic;
                     NodeList questionArray = eTopic.getElementsByTagName("question");
                     for(int i = 0; i < questionArray.getLength(); i++) {
@@ -50,6 +55,7 @@ public class Constants extends Application {
 
                         if(nQuestion.getNodeType() == Node.ELEMENT_NODE) {
 
+                            //set question variables
                             Element eQuestion = (Element)nQuestion;
                             Question newQuestion = new Question();
                             newQuestion.setTopicName(eTopic.getAttribute("id"));

@@ -15,10 +15,11 @@ public class Question {
     private double _result;
 
     public Question() {
-
+        // empty constructor
     }
 
     public Question(int id, String questiontitle, String questiontext, String topicname, double variableOne, double variableTwo, double result) {
+        //create question with id
         this._id = id;
         this._questiontitle = questiontitle;
         this._questiontext = questiontext;
@@ -29,6 +30,7 @@ public class Question {
     }
 
     public Question(String questiontitle, String questiontext, String topicname, double variableOne, double variableTwo, double result) {
+        //create question without id
         this._questiontitle = questiontitle;
         this._questiontext = questiontext;
         this._topicname = topicname;

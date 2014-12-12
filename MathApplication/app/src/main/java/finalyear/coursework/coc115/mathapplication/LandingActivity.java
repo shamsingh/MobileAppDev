@@ -43,31 +43,9 @@ public class LandingActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
 
+        //hide action bar for the main screen
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_landing, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     public void startButtonClick(View v) {
@@ -82,15 +60,18 @@ public class LandingActivity extends ActionBarActivity {
         //create calendar
         Calendar calendar = Calendar.getInstance();
 
+        //set date
         calendar.set(Calendar.MONTH, Calendar.DECEMBER);
         calendar.set(Calendar.YEAR, 2014);
         calendar.set(Calendar.DAY_OF_MONTH, 12);
 
+        //set time
         calendar.set(Calendar.HOUR_OF_DAY, 11);
         calendar.set(Calendar.MINUTE, 11);
         calendar.set(Calendar.SECOND, 11);
         calendar.set(Calendar.AM_PM, Calendar.AM);
 
+        //create pending intent
         Intent myIntent = new Intent(LandingActivity.this, MyReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(LandingActivity.this, 0, myIntent, 0);
 
@@ -105,6 +86,7 @@ public class LandingActivity extends ActionBarActivity {
 
     public void onStopNotification(View v) {
         AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        //find if null
         if(alarmManager != null) {
             alarmManager.cancel(pendingIntent);
             Toast.makeText(this, "Notification cancelled", Toast.LENGTH_SHORT).show();
