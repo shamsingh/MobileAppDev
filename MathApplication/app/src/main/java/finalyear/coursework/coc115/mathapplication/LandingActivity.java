@@ -1,5 +1,6 @@
 package finalyear.coursework.coc115.mathapplication;
 
+import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -11,11 +12,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.facebook.AppEventsLogger;
 
+import java.util.Calendar;
+
 
 public class LandingActivity extends ActionBarActivity {
+
+    private PendingIntent pendingIntent;
 
     @Override
     public void onResume() {
@@ -70,34 +76,40 @@ public class LandingActivity extends ActionBarActivity {
     }
 
     public void onNotification(View v) {
-        //create notification
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.icon)
-                .setContentTitle("It's been a while!")
-                .setContentText("Why not give some Maths a go?")
-                .setAutoCancel(true)
-                .setVibrate(new long[] {1000, 500, 1000, 500})
-                .setLights(Color.MAGENTA, 2000, 4000);
+        //get alarm manager
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
 
-        //create intent for notification to load
-        Intent resultIntent = new Intent(this, TopicsPageActivity.class);
+        //create calendar
+        Calendar calendar = Calendar.getInstance();
 
-        PendingIntent resultPendingIntent =
-                PendingIntent.getActivity(
-                        this,
-                        0,
-                        resultIntent,
-                        PendingIntent.FLAG_UPDATE_CURRENT
-                );
+        calendar.set(Calendar.MONTH, Calendar.DECEMBER);
+        calendar.set(Calendar.YEAR, 2014);
+        calendar.set(Calendar.DAY_OF_MONTH, 12);
 
-        //set the intent to the notification
-        mBuilder.setContentIntent(resultPendingIntent);
+        calendar.set(Calendar.HOUR_OF_DAY, 11);
+        calendar.set(Calendar.MINUTE, 11);
+        calendar.set(Calendar.SECOND, 11);
+        calendar.set(Calendar.AM_PM, Calendar.AM);
 
-        // Sets an ID for the notification
-        int mNotificationId = 001;
-        // Gets an instance of the NotificationManager service
-        NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        // Builds the notification and issues it.
-        mNotifyMgr.notify(mNotificationId, mBuilder.build());
+        Intent myIntent = new Intent(LandingActivity.this, MyReceiver.class);
+        pendingIntent = PendingIntent.getBroadcast(LandingActivity.this, 0, myIntent, 0);
+
+        //use inexact repeat to take up less system resources
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,
+                calendar.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY,
+                pendingIntent);
+
+        Toast.makeText(this, "Repeating Notification Created, staring at " + calendar.getTime(), Toast.LENGTH_LONG).show();
+    }
+
+    public void onStopNotification(View v) {
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        if(alarmManager != null) {
+            alarmManager.cancel(pendingIntent);
+            Toast.makeText(this, "Notification cancelled", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Notification failed to cancel", Toast.LENGTH_SHORT).show();
+        }
     }
 }

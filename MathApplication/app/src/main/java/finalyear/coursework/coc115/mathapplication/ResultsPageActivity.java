@@ -1,11 +1,12 @@
 package finalyear.coursework.coc115.mathapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -87,17 +88,21 @@ public class ResultsPageActivity extends ActionBarActivity {
     }
 
     public void shareToFacebook(View v) {
-        if(FacebookDialog.canPresentShareDialog(getApplicationContext(), FacebookDialog.ShareDialogFeature.SHARE_DIALOG)) {
-            //Publish post using share builder
-            FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(this)
-                    .setLink("http://facebook.com")
-                    .build();
+        if(isNetworkAvailable()) {
+            if (FacebookDialog.canPresentShareDialog(getApplicationContext(), FacebookDialog.ShareDialogFeature.SHARE_DIALOG)) {
+                //Publish post using share builder
+                FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(this)
+                        .setLink("http://facebook.com")
+                        .build();
 
-            uiHelper.trackPendingDialogCall((shareDialog.present()));
+                uiHelper.trackPendingDialogCall((shareDialog.present()));
+            } else {
+                //Fallback, using the Feed dialog
+                //publishFeedDialog();
+                Toast.makeText(getApplicationContext(), "no facebook installed :(", Toast.LENGTH_SHORT).show();
+            }
         } else {
-            //Fallback, using the Feed dialog
-            //publishFeedDialog();
-            Toast.makeText(getApplicationContext(), "no facebook installed :(", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "No Internet connection found", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -183,4 +188,10 @@ public class ResultsPageActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
+    }
 }
