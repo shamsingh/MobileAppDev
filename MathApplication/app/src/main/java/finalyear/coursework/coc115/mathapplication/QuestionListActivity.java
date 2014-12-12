@@ -1,5 +1,6 @@
 package finalyear.coursework.coc115.mathapplication;
 
+import android.app.ActionBar;
 import android.app.ListActivity;
 import android.app.LoaderManager;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteCursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,7 +27,7 @@ import com.commonsware.cwac.loaderex.SQLiteCursorLoader;
 import java.lang.reflect.Type;
 
 
-public class QuestionListActivity extends ListActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class QuestionListActivity extends ActionBarActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private int LIST_ID = 0;
     private String TOPIC = "";
@@ -48,7 +50,7 @@ public class QuestionListActivity extends ListActivity implements LoaderManager.
         mAdapter = new SimpleCursorAdapter(this,
                 R.layout.questionlistitem, null,
                 fromColumns, toViews, 0);
-        ListView listView = getListView();
+        ListView listView = (ListView)findViewById(R.id.list);
         listView.setAdapter(mAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -66,28 +68,6 @@ public class QuestionListActivity extends ListActivity implements LoaderManager.
         // Prepare the loader.  Either re-connect with an existing one,
         // or start a new one.
         getLoaderManager().initLoader(LIST_ID, null, this);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_question_list, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     public void onConfigurationChanged(Configuration config) {
